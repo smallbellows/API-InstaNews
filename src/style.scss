@@ -1,0 +1,171 @@
+@import '_fonts';
+
+/* Mixins for media queries*/
+$tablet-width: 600px;
+$desktop-width: 1000px;
+
+@mixin tablet {
+  @media (min-width: $tablet-width) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: $desktop-width) {
+    @content;
+  }
+}
+/* General styling*/
+
+html {
+  font-size: 16px;
+  font-family: 'Open Sans Web', sans-serif;
+  color: #fff;
+}
+
+body {
+  background: #000;
+}
+
+p {
+  padding: 2%;
+}
+
+header{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  text-align: center;
+
+  @include tablet {
+    flex-direction: row;
+  }
+
+  @include desktop {
+    justify-content: flex-start;
+  }
+}
+
+.logo, .choose-section {
+  @include desktop {
+    flex-basis: 20%;
+  }
+}
+
+/* header once loaded */
+
+header.loaded {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 25px;
+
+  @include tablet {
+    height: auto;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .logo {
+      flex-basis: 33%;
+
+      @include desktop {
+          flex-basis: 15%;
+      }
+  }
+
+  .choose-section {
+    @include tablet {
+      flex-basis: 33%;
+      text-align: center;
+    }
+
+    @include desktop {
+      flex-basis: 15%;
+      text-align: left;
+    }
+  }
+
+  img {
+    height: 150px;
+
+    @include tablet {
+      height: 100px;
+    }
+  }
+
+}
+
+/* articles are initially hidden, html is loaded and then these are shown in main.js*/
+
+section {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 100vw;
+  padding: 0;
+  margin: 0;
+}
+
+.while-loading  {
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+  display: none;
+  img {
+    width: 100%;
+  }
+}
+
+article {
+  flex-basis: 100%;
+  overflow: hidden;
+
+  @include tablet {
+    flex-basis: 33.3333333%;
+  }
+
+  @include desktop {
+    flex-basis: 25%;
+  }
+}
+
+.inner {
+  position: relative;
+  height: 100vw;
+  overflow: hidden;
+
+  @include tablet {
+    height: 300px;
+  }
+
+  @include desktop {
+    height: 400px;
+  }
+
+  p {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 5;
+    margin: 0;
+  }
+}
+
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 10vh;
+  color: #c2c2c2;
+
+  @include desktop {
+    justify-content: flex-start;
+    margin-left: 5%;
+  }
+}

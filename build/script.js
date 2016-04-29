@@ -1,0 +1,1 @@
+console.log("hello world"),console.log("wtf"),console.log("???"),document.write("<p>wtf????</p>"),document.write("<p>things and stuff</p>");
