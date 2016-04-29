@@ -59,7 +59,6 @@ header {
 
 /* header once loaded */
 header.loaded {
-  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -15,9 +15,13 @@ $(function(){
   $('select').on('change', function() {
 
       var $section = $('section');
+      var $header = $('header');
 
-      $('header').addClass('loaded');
 
+      $header.animate({
+        height: 150
+      }, 'slow');
+      $header.addClass('loaded');
 
       $('.while-loading').show();
 
