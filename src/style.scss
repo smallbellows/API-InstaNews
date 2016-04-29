@@ -16,7 +16,7 @@ $desktop-width: 1000px;
 }
 /* General styling*/
 
-html {
+html, p, a {
   font-size: 16px;
   font-family: 'Open Sans Web', sans-serif;
   color: #fff;
@@ -156,13 +156,13 @@ article {
   }
 }
 
-
 footer {
   display: flex;
   justify-content: center;
   align-items: flex-end;
   height: 10vh;
   color: #c2c2c2;
+  padding: 20px;
 
   @include desktop {
     justify-content: flex-start;

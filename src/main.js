@@ -21,7 +21,6 @@ $(function(){
 
       $section.empty();
 
-      //TODO take user input and load into the url passed via ajax
       var userSection = $(this).val();
       var urlForAPI = 'http://api.nytimes.com/svc/topstories/v1/' + userSection
                       + '.json?api-key=8b4edc1d68ed46052e25047d8cbb612a:15:75124067';
@@ -60,11 +59,12 @@ $(function(){
             });
 
             articlesToAppend += '<article>'
+                                + '<a href=\'' + value.url + '\' target=\'_blank\'>'
                                 + '<div class= \'inner\''
                                 +' style = "background: url(\'' + imgUrl +  '\');'
                                 + 'background-size: cover">'
                                 + '<p>' + value.abstract
-                                + '</p></div>'
+                                + '</p></div></a>'
                               + '</article>';
                         //TODO include the link to the url of the article
           });
