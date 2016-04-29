@@ -104,7 +104,8 @@ section {
   margin: 0 auto;
   display: none; }
   .while-loading img {
-    width: 100%; }
+    width: 15%;
+    height: 15%; }
 
 article {
   flex-basis: 100%;
