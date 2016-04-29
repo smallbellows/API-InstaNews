@@ -97,6 +97,9 @@ section {
   width: 100vw;
   padding: 0;
   margin: 0; }
+  section .no-results {
+    font-style: italic;
+    padding: 50px; }
 
 .while-loading {
   text-align: center;

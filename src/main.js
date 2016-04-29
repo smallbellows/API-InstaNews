@@ -17,6 +17,8 @@ $(function(){
       var $section = $('section');
 
       $('header').addClass('loaded');
+
+
       $('.while-loading').show();
 
       $section.empty();
@@ -37,44 +39,51 @@ $(function(){
         // data.results is an array containing all the articles of the chosen section
 
         var nytResults = data.results;
+        if (nytResults.length === 0) {
 
-        if (nytResults != 0) {
+          $section.append('<p class=\'no-results\'>Sorry no results were found</p>');
 
-          nytResults = nytResults.filter(function(item) {
-                                    return item.multimedia.length;
-                                  }).splice(0,12);
-        }
+        } else {
 
-        //nytResults[] now holds max 12 articles that all have a photo attached
+          if (nytResults != 0) {
 
-        var articlesToAppend = '';
-        $.each(nytResults, function(index, value) {
+            nytResults = nytResults.filter(function(item) {
+                                      return item.multimedia.length;
+                                    }).splice(0,12);
+          }
 
-            var imgUrl = '';
-            $.each(value.multimedia, function(key, val) {
+          //nytResults[] now holds max 12 articles that all have a photo attached
 
-              if (val.format === 'superJumbo') {
-                imgUrl = val.url;
-              }
+          var articlesToAppend = '';
+          $.each(nytResults, function(index, value) {
+
+              var imgUrl = '';
+              $.each(value.multimedia, function(key, val) {
+
+                if (val.format === 'superJumbo') {
+                  imgUrl = val.url;
+                }
+              });
+
+              articlesToAppend += '<article>'
+                                  + '<a href=\'' + value.url + '\' target=\'_blank\'>'
+                                  + '<div class= \'inner\''
+                                  +' style = "background: url(\'' + imgUrl +  '\');'
+                                  + 'background-size: cover">'
+                                  + '<p>' + value.abstract
+                                  + '</p></div></a>'
+                                + '</article>';
             });
 
-            articlesToAppend += '<article>'
-                                + '<a href=\'' + value.url + '\' target=\'_blank\'>'
-                                + '<div class= \'inner\''
-                                +' style = "background: url(\'' + imgUrl +  '\');'
-                                + 'background-size: cover">'
-                                + '<p>' + value.abstract
-                                + '</p></div></a>'
-                              + '</article>';
-          });
+            $section.append(articlesToAppend);
 
-          $section.append(articlesToAppend);
+            // when user hovers over an image, the abstract text appears
 
-          // when user hovers over an image, the abstract text appears
+            $('.inner').hover(function() {
+              $(this).children().slideToggle(1000);
+            });
 
-          $('.inner').hover(function() {
-            $(this).children().slideToggle(1000);
-          });
+        }
 
       })
       .always(function(){

@@ -63,6 +63,7 @@ header.loaded {
   text-align: center;
   padding: 25px;
 
+
   @include tablet {
     height: auto;
     flex-direction: row;
@@ -108,6 +109,11 @@ section {
   width: 100vw;
   padding: 0;
   margin: 0;
+
+  .no-results {
+    font-style: italic;
+    padding: 50px;
+  }
 }
 
 .while-loading  {
