@@ -25,7 +25,7 @@ $(function(){
       var urlForAPI = 'http://api.nytimes.com/svc/topstories/v1/' + userSection
                       + '.json?api-key=8b4edc1d68ed46052e25047d8cbb612a:15:75124067';
 
-      console.log(urlForAPI);
+    
       $.ajax({
         method: 'GET',
         url: urlForAPI,
@@ -71,6 +71,14 @@ $(function(){
 
           $section.append(articlesToAppend);
 
+          // when user hovers over an image, the abstract text appears
+
+          $('.inner').hover(function() {
+            $(this).children().toggle();
+          });
+
+
+
 
       })
       .always(function(){
@@ -78,4 +86,7 @@ $(function(){
       });
 
   });
+
+
+
 });
