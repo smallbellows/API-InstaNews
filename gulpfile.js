@@ -4,6 +4,7 @@ var gulp = require('gulp');
 var uglify = require('gulp-uglify');
 var sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
+var plumber = require('gulp-plumber');
 
 gulp.task('default', ['uglify', 'sass', 'browser-sync']);
 
@@ -23,6 +24,10 @@ gulp.task('browser-sync', function() {
 gulp.task('uglify', function() {
 
   return gulp.src(['./src/*.js']) // What files do we want gulp to consume?
+              .pipe(plumber(function () {
+                console.log("there was an error in uglify");
+                this.emit('end');
+              }))
               .pipe(uglify()) // Call the uglify function on these files
               .pipe(gulp.dest('./build')); // Where do we put the result?
 
