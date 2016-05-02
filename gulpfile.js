@@ -10,7 +10,6 @@ var jscs = require('gulp-jscs');
 var jshint = require('gulp-jshint');
 
 
-
 gulp.task('default', ['uglify', 'sass', 'browser-sync']);
 
 gulp.task('browser-sync', function() {
@@ -52,7 +51,7 @@ gulp.task('cssnano', function () {
 
 gulp.task('jscs', function() {
     gulp.src('./src/**/*.js')
-        .pipe(jscs())
+        .pipe(jscs({configPath: '.jscsrc'}))
         .pipe(jscs.reporter());
 });
 
