@@ -36,21 +36,14 @@ header.loaded {
   }
 
   .logo {
-      flex-basis: 33%;
-
-      @include desktop {
-          flex-basis: 15%;
-      }
+      flex-basis: 15%;
+      text-align: left;
   }
 
   .choose-section {
+
     @include tablet {
       flex-basis: 33%;
-      text-align: center;
-    }
-
-    @include desktop {
-      flex-basis: 15%;
       text-align: left;
     }
   }

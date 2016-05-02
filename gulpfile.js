@@ -8,7 +8,7 @@ var plumber = require('gulp-plumber');
 var cssnano = require('gulp-cssnano');
 var jscs = require('gulp-jscs');
 var jshint = require('gulp-jshint');
-
+var autoprefix = require('gulp-autoprefixer');
 
 gulp.task('default', ['uglify', 'sass', 'browser-sync']);
 
@@ -23,7 +23,6 @@ gulp.task('browser-sync', function() {
     gulp.watch('./src/*.scss', ['sass']);
     gulp.watch(['./build/**/*.*', 'index.html']).on('change', browserSync.reload);
 });
-
 
 gulp.task('uglify', function() {
 
@@ -43,8 +42,13 @@ gulp.task('sass', function() {
               .pipe(gulp.dest('./build'));
 });
 
-gulp.task('cssnano', function () {
-  return gulp.src('./build/*.css')
+gulp.task('css', function () {
+  return gulp.src('./src/**/*.scss')
+              .pipe(sass().on('error', sass.logError))
+              .pipe(autoprefix({
+			            browsers: ['last 2 versions'],
+                	cascade: false
+		            }))
               .pipe(cssnano())
               .pipe(gulp.dest('./build'));
 });
