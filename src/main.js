@@ -19,7 +19,7 @@ $(function() {
           var $section = $('section');
           var $header = $('header');
 
-          // the header will shrink to it's smaller height 
+          // the header will shrink to it's smaller height
           $header.animate({
               height: $header.css('height', 'auto').height(),
               }, 'slow');
