@@ -38,11 +38,15 @@ gulp.task('uglify', function() {
 
 });
 
-
-
 gulp.task('sass', function() {
   return gulp.src('./src/**/*.scss')
               .pipe(sass().on('error', sass.logError))
+              .pipe(gulp.dest('./build'));
+});
+
+gulp.task('cssnano', function () {
+  return gulp.src('./build/*.css')
+              .pipe(cssnano())
               .pipe(gulp.dest('./build'));
 });
 
