@@ -5,6 +5,11 @@ var uglify = require('gulp-uglify');
 var sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
 var plumber = require('gulp-plumber');
+var cssnano = require('gulp-cssnano');
+var jscs = require('gulp-jscs');
+var jshint = require('gulp-jshint');
+
+
 
 gulp.task('default', ['uglify', 'sass', 'browser-sync']);
 
@@ -33,8 +38,24 @@ gulp.task('uglify', function() {
 
 });
 
+
+
 gulp.task('sass', function() {
   return gulp.src('./src/**/*.scss')
               .pipe(sass().on('error', sass.logError))
               .pipe(gulp.dest('./build'));
+});
+
+gulp.task('jscs', function() {
+    gulp.src('./src/**/*.js')
+        .pipe(jscs())
+        .pipe(jscs.reporter());
+});
+
+gulp.task('lint', function() {
+    gulp.src('./src/**/*.js')
+        .pipe(jshint('.jshintrc'))
+        .pipe(jshint.reporter('default'))
+        .pipe(jshint.reporter('fail'))
+
 });
