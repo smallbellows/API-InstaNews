@@ -19,7 +19,7 @@ $(function(){
 
 
       $header.animate({
-        height: 150
+        height: $header.css('height', 'auto').height()
       }, 'slow');
       $header.addClass('loaded');
 
