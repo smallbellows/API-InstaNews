@@ -1,4 +1,5 @@
 @import '_fonts';
+@import '_header':
 
 /* Mixins for media queries*/
 $tablet-width: 600px;
@@ -14,6 +15,7 @@ $desktop-width: 1000px;
     @content;
   }
 }
+
 /* General styling*/
 
 html, p, a {
@@ -25,80 +27,6 @@ html, p, a {
 body {
   background: #000;
 }
-
-p {
-  padding: 2%;
-}
-
-header{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 90vh;
-  text-align: center;
-
-  @include tablet {
-    flex-direction: row;
-  }
-
-  @include desktop {
-    justify-content: flex-start;
-  }
-}
-
-.logo, .choose-section {
-  @include desktop {
-    flex-basis: 20%;
-  }
-}
-
-/* header once loaded */
-
-header.loaded {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 25px;
-
-
-  @include tablet {
-    height: auto;
-    flex-direction: row;
-    justify-content: flex-start;
-  }
-
-  .logo {
-      flex-basis: 33%;
-
-      @include desktop {
-          flex-basis: 15%;
-      }
-  }
-
-  .choose-section {
-    @include tablet {
-      flex-basis: 33%;
-      text-align: center;
-    }
-
-    @include desktop {
-      flex-basis: 15%;
-      text-align: left;
-    }
-  }
-
-  img {
-    height: 150px;
-
-    @include tablet {
-      height: 100px;
-    }
-  }
-
-}
-
 /* articles are initially hidden, html is loaded and then these are shown in main.js*/
 
 section {
@@ -145,6 +73,7 @@ article {
   height: 100vw;
   overflow: hidden;
 
+
   @include tablet {
     height: 300px;
   }
@@ -156,12 +85,12 @@ article {
   p {
     position: absolute;
     bottom: 0px;
-    width: 100%;
+    width: 96%;
+    padding: 2%;
+    margin: 0;
     background: rgba(0,0,0,0.7);
     z-index: 5;
-    margin: 0;
     display: none;
-
   }
 
 }

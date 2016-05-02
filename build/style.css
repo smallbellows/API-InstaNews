@@ -36,9 +36,6 @@ html, p, a {
 body {
   background: #000; }
 
-p {
-  padding: 2%; }
-
 header {
   display: flex;
   flex-direction: column;
@@ -132,10 +129,11 @@ article {
   .inner p {
     position: absolute;
     bottom: 0px;
-    width: 100%;
+    width: 96%;
+    padding: 2%;
+    margin: 0;
     background: rgba(0, 0, 0, 0.7);
     z-index: 5;
-    margin: 0;
     display: none; }
 
 footer {
