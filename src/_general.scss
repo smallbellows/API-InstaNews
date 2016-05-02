@@ -1,11 +1,18 @@
+// colors
+
+$bkgrd-color: #000;
+$overlay-color: rgba(0,0,0,0.7);
+$font-color: #fff;
+$footer-font-color: #c2c2c2;
+
 /* General styling*/
 
 html, p, a {
   font-size: 16px;
   font-family: 'Open Sans Web', sans-serif;
-  color: #fff;
+  color: $font-color;
 }
 
 body {
-  background: #000;
+  background: $bkgrd-color;
 }
