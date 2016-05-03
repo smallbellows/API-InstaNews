@@ -5,7 +5,6 @@ var uglify = require('gulp-uglify');
 var sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
 var plumber = require('gulp-plumber');
-var cssnano = require('gulp-cssnano');
 var jscs = require('gulp-jscs');
 var jshint = require('gulp-jshint');
 var autoprefix = require('gulp-autoprefixer');
@@ -44,12 +43,11 @@ gulp.task('sass', function() {
 
 gulp.task('css', function () {
   return gulp.src('./src/**/*.scss')
-              .pipe(sass().on('error', sass.logError))
+              .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
               .pipe(autoprefix({
 			            browsers: ['last 2 versions'],
                 	cascade: false
 		            }))
-              .pipe(cssnano())
               .pipe(gulp.dest('./build'));
 });
 
