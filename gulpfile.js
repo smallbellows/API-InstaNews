@@ -8,8 +8,9 @@ var plumber = require('gulp-plumber');
 var jscs = require('gulp-jscs');
 var jshint = require('gulp-jshint');
 var autoprefix = require('gulp-autoprefixer');
+var babel = require('gulp-babel');
 
-gulp.task('default', ['uglify', 'sass', 'browser-sync']);
+gulp.task('default', ['es2015', 'sass', 'browser-sync']);
 
 gulp.task('browser-sync', function() {
     browserSync.init({
@@ -18,9 +19,17 @@ gulp.task('browser-sync', function() {
     });
 
     // watch tasks
-    gulp.watch('./src/*.js', ['uglify']);
+    gulp.watch('./src/**/*.js', ['es2015']);
     gulp.watch('./src/**/*.scss', ['sass']);
     gulp.watch(['./build/**/*.*', 'index.html']).on('change', browserSync.reload);
+});
+
+gulp.task('es2015', function() {
+  return gulp.src('./src/**/*.js')
+        .pipe(babel({
+            presets: ['es2015']
+        }))
+        .pipe(gulp.dest('./build'));
 });
 
 gulp.task('uglify', function() {
@@ -40,6 +49,7 @@ gulp.task('sass', function() {
               .pipe(sass().on('error', sass.logError))
               .pipe(gulp.dest('./build'));
 });
+
 
 gulp.task('css', function () {
   return gulp.src('./src/**/*.scss')

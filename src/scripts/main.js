@@ -16,8 +16,8 @@ $(function () {
   $('select').heapbox({
     onChange: function (input) {
 
-      var $section = $('section');
-      var $header = $('header');
+      const $section = $('section');
+      const $header = $('header');
 
       // the header will shrink to it's smaller height
       $header.animate({
@@ -30,8 +30,8 @@ $(function () {
       //empty out any previous search results
       $section.empty();
 
-      var userSection = input;
-      var urlForAPI = 'http://api.nytimes.com/svc/topstories/v1/'
+      let userSection = input;
+      let urlForAPI = 'http://api.nytimes.com/svc/topstories/v1/'
                       + userSection
                       + '.json?api-key=8b4edc1d68ed46052e25047d8cbb612a:15:75124067';
 
@@ -45,7 +45,7 @@ $(function () {
           // data comes back as an object, one property of which is called results
           // data.results is an array containing all the articles of the chosen section
 
-          var nytResults = data.results;
+          let nytResults = data.results;
 
           if (nytResults.length === 0) {
 
@@ -63,10 +63,10 @@ $(function () {
 
             //nytResults[] now holds max 12 articles that all have a photo attached
 
-            var articlesToAppend = '';
+            let articlesToAppend = '';
             $.each(nytResults, function (index, value) {
 
-              var imgUrl = '';
+              let imgUrl = '';
               $.each(value.multimedia, function (key, val) {
 
                 if (val.format === 'superJumbo') {
@@ -94,9 +94,10 @@ $(function () {
           }
 
         })
-        .always(function () {
+        .always( () => {
           //hide the loading .gif
           $('.while-loading').hide();
+        
         });
     },
   });
