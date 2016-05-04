@@ -10,7 +10,7 @@ var jshint = require('gulp-jshint');
 var autoprefix = require('gulp-autoprefixer');
 var babel = require('gulp-babel');
 
-gulp.task('default', ['es2015', 'sass', 'browser-sync']);
+gulp.task('default', ['es2015', 'css', 'browser-sync']);
 
 gulp.task('browser-sync', function() {
     browserSync.init({
@@ -20,7 +20,7 @@ gulp.task('browser-sync', function() {
 
     // watch tasks
     gulp.watch('./src/**/*.js', ['es2015']);
-    gulp.watch('./src/**/*.scss', ['sass']);
+    gulp.watch('./src/**/*.scss', ['css ']);
     gulp.watch(['./build/**/*.*', 'index.html']).on('change', browserSync.reload);
 });
 
@@ -41,7 +41,6 @@ gulp.task('uglify', function() {
               }))
               .pipe(uglify()) // Call the uglify function on these files
               .pipe(gulp.dest('./build')); // Where do we put the result?
-
 });
 
 gulp.task('sass', function() {

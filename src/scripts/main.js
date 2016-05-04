@@ -31,16 +31,14 @@ $(function () {
       $section.empty();
 
       let userSection = input;
-      let urlForAPI = 'http://api.nytimes.com/svc/topstories/v1/'
-                      + userSection
-                      + '.json?api-key=8b4edc1d68ed46052e25047d8cbb612a:15:75124067';
+      let urlForAPI = `http://api.nytimes.com/svc/topstories/v1/${userSection}.json?api-key=8b4edc1d68ed46052e25047d8cbb612a:15:75124067`;
 
       $.ajax({
           method: 'GET',
           url: urlForAPI,
           dataType: 'json',
         })
-        .done(function (data) {
+        .done( (data) => {
 
           // data comes back as an object, one property of which is called results
           // data.results is an array containing all the articles of the chosen section
@@ -64,10 +62,10 @@ $(function () {
             //nytResults[] now holds max 12 articles that all have a photo attached
 
             let articlesToAppend = '';
-            $.each(nytResults, function (index, value) {
+            $.each(nytResults, (index, value) => {
 
               let imgUrl = '';
-              $.each(value.multimedia, function (key, val) {
+              $.each(value.multimedia, (key, val) => {
 
                 if (val.format === 'superJumbo') {
                   imgUrl = val.url;
@@ -97,7 +95,7 @@ $(function () {
         .always( () => {
           //hide the loading .gif
           $('.while-loading').hide();
-        
+
         });
     },
   });
