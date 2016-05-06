@@ -28,7 +28,7 @@ header.loaded {
   align-items: center;
   text-align: center;
   padding: 25px;
-
+  margin-bottom: 5px;
   @include tablet {
     height: auto;
     flex-direction: row;
