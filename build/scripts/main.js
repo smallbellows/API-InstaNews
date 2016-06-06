@@ -15,6 +15,7 @@ $(function () {
       -hide the loading .gif
     Select is styled with heapbox jquery plugin
   */
+
   $('select').heapbox({
     onChange: function onChange(input) {
 
@@ -72,7 +73,7 @@ $(function () {
               }
             });
 
-            articlesToAppend += '<article>' + '<a href=\'' + value.url + '\' target=\'_blank\'>' + '<div class= \'inner\'' + ' style = "background: url(\'' + imgUrl + '\');' + 'background-size: cover">' + '<p>' + value.abstract + '</p></div></a>' + '</article>';
+            articlesToAppend += '<article>\n                                      <a href="' + value.url + '" target="_blank">\n                                        <div class="inner"\n                                              style="background: url(\'' + imgUrl + '\');\n                                                     background-size: cover">\n                                          <p>' + value.abstract + '</p>\n                                        </div>\n                                      </a>\n                                      </article>';
           });
 
           $section.append(articlesToAppend);

@@ -13,6 +13,7 @@ $(function () {
       -hide the loading .gif
     Select is styled with heapbox jquery plugin
   */
+
   $('select').heapbox({
     onChange: function (input) {
 
@@ -38,7 +39,7 @@ $(function () {
           url: urlForAPI,
           dataType: 'json',
         })
-        .done( (data) => {
+        .done((data) => {
 
           // data comes back as an object, one property of which is called results
           // data.results is an array containing all the articles of the chosen section
@@ -72,13 +73,15 @@ $(function () {
                 }
               });
 
-              articlesToAppend += '<article>'
-                                  + '<a href=\'' + value.url + '\' target=\'_blank\'>'
-                                  + '<div class= \'inner\''
-                                  + ' style = "background: url(\'' + imgUrl + '\');'
-                                  + 'background-size: cover">'
-                                  + '<p>' + value.abstract + '</p></div></a>'
-                                + '</article>';
+              articlesToAppend += `<article>
+                                      <a href="${value.url}" target="_blank">
+                                        <div class="inner"
+                                              style="background: url('${imgUrl}');
+                                                     background-size: cover">
+                                          <p>${value.abstract}</p>
+                                        </div>
+                                      </a>
+                                      </article>`;
             });
 
             $section.append(articlesToAppend);
@@ -86,17 +89,18 @@ $(function () {
             // when user hovers over an image, the abstract text appears
 
             $('.inner').hover(function () {
-              $(this).children().slideToggle(1000);
+              $(this).children().slideToggle(2000);
             });
 
           }
 
         })
-        .always( () => {
+        .always(() => {
           //hide the loading .gif
           $('.while-loading').hide();
 
         });
+
     },
   });
 });
